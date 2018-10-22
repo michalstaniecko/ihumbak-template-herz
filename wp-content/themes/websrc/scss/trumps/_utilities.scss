@@ -1,0 +1,72 @@
+$colorNames: tc2  white  silver  green  red;
+$colorVals:  $tc2 $white $silver $green $red;
+$fontSizes: 10 12;
+$spacings: 5 10 15;
+
+$i: 1;
+@each $cn in $colorNames {
+  $cv: nth($colorVals, $i);
+  .u--bg-#{$cn}{
+    background-color: $cv;
+  }
+  .u--txt-#{$cn}{
+    color: $cv;
+  }
+  $i: $i + 1;
+}
+
+@each $dim in $fontSizes {
+  .u--fs-#{$dim}{
+    font-size: $dim * 1px;
+  }
+}
+
+
+@each $dim in $spacings {
+  .u--p-#{$dim}{
+    padding: $dim * 1px;
+  }
+  .u--py-#{$dim}{
+    padding-top: $dim * 1px;
+    padding-bottom: $dim * 1px;
+  }
+  .u--px-#{$dim} {
+    padding-left: $dim * 1px;
+    padding-right: $dim * 1px;
+  }
+  .u--pt-#{$dim} {
+    padding-top: $dim * 1px;
+  }
+  .u--pb-#{$dim} {
+    padding-bottom: $dim * 1px;
+  }
+  .u--pl-#{$dim} {
+    padding-left: $dim * 1px;
+  }
+  .u--pr-#{$dim} {
+    padding-right: $dim * 1px;
+  }
+  .u--m-#{$dim}{
+    margin: $dim * 1px;
+  }
+  .u--my-#{$dim}{
+    margin-top: $dim * 1px;
+    margin-bottom: $dim * 1px;
+  }
+  .u--mx-#{$dim} {
+    margin-left: $dim * 1px;
+    margin-right: $dim * 1px;
+  }
+  .u--mt-#{$dim} {
+    margin-top: $dim * 1px;
+  }
+  .u--mb-#{$dim} {
+    margin-bottom: $dim * 1px;
+  }
+  .u--ml-#{$dim} {
+    margin-left: $dim * 1px;
+  }
+  .u--mr-#{$dim} {
+    margin-right: $dim * 1px;
+  }
+}
