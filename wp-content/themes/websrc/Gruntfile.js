@@ -12,7 +12,7 @@ module.exports = function (grunt) {
 			'js':      'js',
 			'node':    'node_modules',
 			'bower':   'bower_components',
-			'release': '../herz'
+			'release': '../herz-studio'
 		},
 		ftp:   {
 			'host': '',

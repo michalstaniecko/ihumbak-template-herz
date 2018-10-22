@@ -1,10 +1,23 @@
-<?php
-/**
- *
- * Created by PhpStorm.
- * User: Michal Staniecko
- * Date: 22.10.18
- * Time: 15:29
- */
+<!DOCTYPE html>
+<html <?php language_attributes(); ?> class="no-js no-svg">
+<head>
+  <meta charset="<?php bloginfo( 'charset' ); ?>">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="profile" href="http://gmpg.org/xfn/11">
 
-echo 'herz studio';
+  <?php wp_head(); ?>
+</head>
+<body>
+<?php do_action('after_body'); ?>
+<?php get_header(); ?>
+<div class="">
+
+  <?php get_template_part('partials/_hero-scene'); ?>
+  <?php get_template_part('partials/_content'); ?>
+  <?php get_template_part('partials/_logos'); ?>
+
+</div>
+<?php get_footer(); ?>
+<?php wp_footer(); ?>
+</body>
+</html>

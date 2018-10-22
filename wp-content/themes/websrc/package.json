@@ -1,5 +1,5 @@
 {
-  "name": "silenttech",
+  "name": "herz",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -29,7 +29,8 @@
     "jquery-colorbox": "^1.6.4",
     "load-grunt-config": "^0.19.2",
     "popper.js": "^1.12.9",
-    "rollup-plugin-babel": "^3.0.3"
+    "rollup-plugin-babel": "^3.0.3",
+    "swiper": "^4.4.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
