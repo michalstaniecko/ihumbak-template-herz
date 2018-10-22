@@ -1,1 +1,1 @@
-import './example'; //example
+import './hero-scene';

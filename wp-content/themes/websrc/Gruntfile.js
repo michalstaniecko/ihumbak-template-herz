@@ -98,7 +98,8 @@ module.exports = function (grunt) {
 					//'<%= paths.node %>/popper.js/dist/umd/popper.js',
 					//'<%= paths.node %>/bootstrap/dist/js/bootstrap.js',
 					//'<%= paths.node %>/flexslider/2.6.1/jquery.flexslider.js',
-					//'<%= paths.node %>/jquery-colorbox/jquery.colorbox.js'
+					//'<%= paths.node %>/jquery-colorbox/jquery.colorbox.js',
+					'<%= paths.node %>/swiper/dist/js/swiper.min.js',
 				],
 				dest:    '<%= paths.release %>/<%= paths.js %>/vendors.js'
 			}
