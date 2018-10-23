@@ -5,26 +5,26 @@ module.exports = function (grunt) {
 
 	var config = {
 		paths: {
-			'build':   'build',
-			'src':     'src',
-			'scss':    'scss',
-			'css':     'css',
-			'js':      'js',
-			'node':    'node_modules',
-			'bower':   'bower_components',
+			'build': 'build',
+			'src': 'src',
+			'scss': 'scss',
+			'css': 'css',
+			'js': 'js',
+			'node': 'node_modules',
+			'bower': 'bower_components',
 			'release': '../herz-studio'
 		},
-		ftp:   {
+		ftp: {
 			'host': '',
-			'key':  '',
+			'key': '',
 			'dest': ''
 		}
 	};
 
 	grunt.initConfig({
-		pkg:   grunt.file.readJSON('package.json'),
+		pkg: grunt.file.readJSON('package.json'),
 		paths: config.paths,
-		ftp:   config.ftp,
+		ftp: config.ftp,
 
 		sass: {
 			dist: {
@@ -36,13 +36,13 @@ module.exports = function (grunt) {
 
 		postcss: {
 			options: {
-				map:        true,
+				map: true,
 				processors: [
 					require('autoprefixer')({browsers: 'last 2 versions'}),
 					require('cssnano')()
 				]
 			},
-			dist:    {
+			dist: {
 				src: '<%= paths.release %>/<%= paths.css %>/*.css'
 			}
 		},
@@ -52,7 +52,7 @@ module.exports = function (grunt) {
 				files: ['<%= paths.scss %>/**/*.scss'],
 				tasks: ['sass']
 			},
-			js:  {
+			js: {
 				files: ['<%= paths.js %>/**/*.js'],
 				tasks: ['rollup']
 			}
@@ -60,16 +60,16 @@ module.exports = function (grunt) {
 
 		rollup: {
 			"options": {
-				"format":   "iife",
+				"format": "iife",
 				moduleName: '',
-				"plugins":  [
+				"plugins": [
 					require("rollup-plugin-babel")({
 						"presets": [["env", {"modules": false}]],
 						"plugins": ["external-helpers", 'transform-object-rest-spread']
 					})
 				],
 			},
-			"dist":    {
+			"dist": {
 				"files": {
 					'<%= paths.release %>/<%= paths.js %>/main.js': ["js/index.js"]
 				}
@@ -80,20 +80,20 @@ module.exports = function (grunt) {
 			build: {
 				options: {
 					compress: false,
-					mangle:   true,
+					mangle: true,
 					beautify: false
 				},
-				src:     '<%= paths.release %>/<%= paths.js %>/main.js',
-				dest:    '<%= paths.release %>/<%= paths.js %>/main.js'
+				src: '<%= paths.release %>/<%= paths.js %>/main.js',
+				dest: '<%= paths.release %>/<%= paths.js %>/main.js'
 			},
 
 			vendors: {
 				options: {
 					compress: false,
-					mangle:   true,
+					mangle: true,
 					beautify: false
 				},
-				src:     [
+				src: [
 					'<%= paths.node %>/jquery/dist/jquery.js',
 					//'<%= paths.node %>/popper.js/dist/umd/popper.js',
 					//'<%= paths.node %>/bootstrap/dist/js/bootstrap.js',
@@ -101,7 +101,16 @@ module.exports = function (grunt) {
 					//'<%= paths.node %>/jquery-colorbox/jquery.colorbox.js',
 					'<%= paths.node %>/swiper/dist/js/swiper.min.js',
 				],
-				dest:    '<%= paths.release %>/<%= paths.js %>/vendors.js'
+				dest: '<%= paths.release %>/<%= paths.js %>/vendors.js'
+			}
+		},
+
+		copy: {
+			images: {
+				expand: true,
+				cwd: 'img/',
+				src: ['**'],
+				dest: '<%= paths.release %>/img/',
 			}
 		}
 
@@ -112,6 +121,7 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
+	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-pngmin');
 	grunt.loadNpmTasks('grunt-rollup');
 
@@ -125,6 +135,7 @@ module.exports = function (grunt) {
 	]);
 
 	grunt.registerTask('build', [
+		'rollup',
 		'uglify',
 		'sass',
 		'postcss'
