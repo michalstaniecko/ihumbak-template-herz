@@ -1,0 +1,11 @@
+.o-section {
+  @extend .py-section;
+}
+
+.o-section-stop {
+
+  max-width: $section-width;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}

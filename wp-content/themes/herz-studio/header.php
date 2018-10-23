@@ -1,9 +1,9 @@
 <header class=" c-topbar">
   <div class="container-fluid container-fluid-stop">
 
-    <div class="row">
+    <div class="row c-topbar__row">
       <div class="col-auto c-topbar__logo">
-        Logo
+        <img src="<?= HERZ_IMG ?>/herz-logo-top.png" />
       </div>
       <div class="col-auto ml-auto c-topbar__socials">
         <?php get_template_part('partials/elements/_socials'); ?>

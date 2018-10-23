@@ -1,0 +1,10 @@
+@include fontface(AvantGarde, subset-AvantGarde-Bold, 700);
+@include fontface(AvantGarde, subset-AvantGarde-BoldObl, 700, italic);
+@include fontface(AvantGarde, subset-AvantGarde-BookOblique, 400, italic);
+@include fontface(AvantGarde, subset-AvantGarde-ExtraLight, 300);
+@include fontface(AvantGarde, subset-AvantGarde-Medium, 500);
+
+@include fontface(Veto, subset-VetoLTPro-Light, 300);
+@include fontface(Veto, subset-VetoLTPro-LightItalic, 300, italic);
+@include fontface(Veto, subset-VetoLTPro-Medium, 500);
+@include fontface(Veto, subset-VetoLTPro-Regular, 400);

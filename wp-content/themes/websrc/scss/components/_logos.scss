@@ -1,0 +1,12 @@
+.c-logos {
+  padding-left: 60px;
+  padding-right: 60px;
+  height: 226px;
+  background-color: rgba(#000000, 0.1);
+}
+
+.swiper-slide {
+  .c-logos & {
+    text-align: center;
+  }
+}

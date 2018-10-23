@@ -1,0 +1,10 @@
+.container-fluid-stop {
+  max-width: $container-width;
+}
+
+.container-fluid-narrow {
+  max-width: $narrow-width;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}

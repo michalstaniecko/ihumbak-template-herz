@@ -4,8 +4,15 @@ class HeroScene {
 	}
 
 	initSlider() {
-		this.heroSceneSlider = new Swiper('.swiper-container', {
-
+		this.heroSceneSlider = new Swiper(this.heroSceneContainer, {
+			/*effect: 'cube',
+			grabCursor: true,
+			cubeEffect: {
+				shadow: true,
+				slideShadows: true,
+				shadowOffset: 20,
+				shadowScale: 0.94,
+			},*/
 		});
 	}
 }

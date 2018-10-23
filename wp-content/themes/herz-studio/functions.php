@@ -7,6 +7,8 @@
  * Time: 15:29
  */
 
+define('HERZ_IMG',get_stylesheet_directory_uri().'/img');
+
 add_action('wp_enqueue_scripts', 'herz_enqueue_scripts');
 
 function herz_enqueue_scripts() {

@@ -1,0 +1,22 @@
+html {
+  -webkit-font-smoothing: antialiased;
+  font-size: 20px;
+}
+
+body {
+  font-family: $primary-font;
+  font-weight: 300;
+}
+
+h1 {
+  letter-spacing: 5px;
+}
+
+h2 {
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  .o-section--columns & {
+    margin-bottom: 50px;
+  }
+}

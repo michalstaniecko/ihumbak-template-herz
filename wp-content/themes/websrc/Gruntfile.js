@@ -111,6 +111,12 @@ module.exports = function (grunt) {
 				cwd: 'img/',
 				src: ['**'],
 				dest: '<%= paths.release %>/img/',
+			},
+			fonts: {
+				expand: true,
+				src: ['fonts/*'],
+				dest: '<%= paths.release %>/',
+				filter: 'isFile'
 			}
 		}
 

@@ -1,3 +1,8 @@
+@import '../node_modules/bootstrap/scss/mixins';
+@import '../node_modules/bootstrap/scss/functions';
+
+@import 'trumps/mixins';
+
 @import "config/bootstrap";
 @import "config/config";
 @import "config/fonts";
@@ -7,6 +12,7 @@
 @import "base/global";
 
 @import "objects/container";
+@import "objects/section";
 
 // Plugins
 // @import "plugins/";
@@ -15,6 +21,11 @@
 
 // Components
 // @import "components/";
+@import "components/topbar";
+@import "components/logos";
+@import "components/social";
+@import "components/hero-scene";
+@import "components/footer";
 
 // Trumps
 @import "trumps/utilities";

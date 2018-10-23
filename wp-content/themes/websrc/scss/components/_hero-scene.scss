@@ -1,0 +1,97 @@
+.c-hero-scene {
+  @include media-breakpoint-down(md) {
+    position: relative;
+    overflow: hidden;
+    &::before {
+      content:'';
+      display: block;
+      padding-top: 100%;
+    }
+  }
+  > .container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+    @include media-breakpoint-down(md) {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: 0;
+    }
+
+  }
+}
+
+.c-hero-scene__slider {
+  position: relative;
+  overflow: hidden;
+  &::before {
+    content:'';
+    display: block;
+    padding-top: (1600 / 1600) * 100%;
+    @include media-breakpoint-up(lg){
+
+      padding-top: (647 / 1600) * 100%;
+    }
+  }
+}
+
+.c-hero-scene__project-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.c-hero-scene__project {
+  width: auto;
+  height: 100%;
+  @include media-breakpoint-down(md) {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  @include media-breakpoint-up(lg) {
+    height: auto;
+    width: 100%;
+  }
+}
+
+.c-hero-scene__lead {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 125px;
+  z-index: 100;
+  > .container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.c-hero-scene__lead-text {
+
+  padding-left: 60px;
+  text-transform: uppercase;
+  h1  {
+    $font-size: 70px;
+    color: #fff;
+    opacity: 0.75;
+    font-weight: 700;
+    line-height: 1;
+    @include media-breakpoint-between(lg, xl) {
+      font-size: ($font-size / 1600px) * 100vw;
+    }
+    @include media-breakpoint-up(xxl) {
+
+      font-size: $font-size;
+    }
+  }
+}
+
+.swiper-container-cube .swiper-cube-shadow,
+.swiper-slide-shadow-left,
+.swiper-slide-shadow-right {
+  display: none !important;
+}
