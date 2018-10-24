@@ -3,21 +3,28 @@
 $projects = array(
   array(
     'type' => 'image',
-    'src' => HERZ_IMG.'/projects/1.png',
+    'src'  => HERZ_IMG . '/projects/1.png',
   ),
   array(
     'type' => 'image',
-    'src' => HERZ_IMG.'/projects/2.png',
+    'src'  => HERZ_IMG . '/projects/2.png',
   ),
   array(
     'type' => 'image',
-    'src' => HERZ_IMG.'/projects/3.png',
+    'src'  => HERZ_IMG . '/projects/3.png',
   ),
   array(
     'type' => 'image',
-    'src' => HERZ_IMG.'/projects/4.png',
+    'src'  => HERZ_IMG . '/projects/4.png',
   ),
-)
+);
+
+$args = array(
+  'post_type'      => 'project',
+  'posts_per_page' => - 1
+);
+
+$projects = new WP_Query( $args );
 ?>
 
 <div class="c-hero-scene">
@@ -28,30 +35,55 @@ $projects = array(
       <!-- Additional required wrapper -->
       <div class="swiper-wrapper">
         <!-- Slides -->
-        <?php foreach ($projects as $project) : ?>
-        <div class="swiper-slide c-hero-scene__slider">
-          <div class="c-hero-scene__project-wrapper">
+        <?php if ( $projects->have_posts() ): while ( $projects->have_posts() ): $projects->the_post(); ?>
+          <?php
+          $images       = rwmb_meta( 'image', array( 'limit' => 1 ) );
+          $image        = reset( $images );
+          $project_type = rwmb_meta( 'type' );
+          ?>
+          <div class="swiper-slide c-hero-scene__slider c-hero-scene__slider--<?= $project_type ?>">
+            <div class="c-hero-scene__project-wrapper" >
+              <?php switch ( $project_type ) :
 
-            <img src="<?= $project['src'] ?>" class="c-hero-scene__project" />
+
+                case 'video': ?>
+                  <?php $videos = rwmb_meta( 'video', array( 'limit' => 1 ) ); ?>
+                  <?php $video = reset( $videos ); ?>
+                  <div class="c-hero-scene__player c-hero-scene__player--video">
+                    <video loop muted>
+                      <source src="<?= $video['url'] ?>" type="video/mp4">
+                    </video>
+                  </div>
+                  <?php break;
+
+              endswitch; ?>
+
+              <img src="<?= $image['full_url'] ?>" class="c-hero-scene__project"/>
+            </div>
           </div>
-        </div>
-        <?php endforeach; ?>
+        <?php endwhile;
+          wp_reset_query(); endif; ?>
       </div>
 
       <div class="swiper-button-prev"></div>
       <div class="swiper-button-next"></div>
-    </div>
-  </div>
-  <div class="c-hero-scene__lead">
-    <div class="container-fluid container-fluid-stop">
+      <div class="c-hero-scene__lead">
+        <div class="container-fluid container-fluid-stop">
 
-      <div class="c-hero-scene__lead-text">
-        <h1>
-          Realizacje<br/>
-          od których serce<br/>
-          bije szybciej
-        </h1>
+          <div class="c-hero-scene__lead-text">
+            <h1>
+              Realizacje<br/>
+              od których serce<br/>
+              bije szybciej
+            </h1>
+          </div>
+        </div>
+      </div>
+
+      <div class="c-hero-scene__play-icon d-none">
+        <span class="h1 text-secondary">play</span>
       </div>
     </div>
   </div>
+
 </div>

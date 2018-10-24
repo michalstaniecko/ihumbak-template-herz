@@ -42,11 +42,17 @@
   left: 0;
   right: 0;
   bottom: 0;
+  background-position: center center;
+  -webkit-background-size: cover;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .c-hero-scene__project {
   width: auto;
   height: 100%;
+  position: absolute;
+  top: 0;
   @include media-breakpoint-down(md) {
     position: absolute;
     left: 50%;
@@ -62,8 +68,12 @@
   position: absolute;
   left: 0;
   right: 0;
-  top: 125px;
+  top: 60px;
   z-index: 100;
+
+  @include media-breakpoint-up(md) {
+    top: 125px;
+  }
   > .container-fluid {
     padding-left: 0;
     padding-right: 0;
@@ -72,14 +82,18 @@
 
 .c-hero-scene__lead-text {
 
-  padding-left: 60px;
+  padding-left: 20px;
   text-transform: uppercase;
+  @include media-breakpoint-up(md) {
+    padding-left: 60px;
+  }
   h1  {
     $font-size: 70px;
     color: #fff;
     opacity: 0.75;
     font-weight: 700;
     line-height: 1;
+    font-size: 20px;
     @include media-breakpoint-between(lg, xl) {
       font-size: ($font-size / 1600px) * 100vw;
     }
@@ -94,4 +108,45 @@
 .swiper-slide-shadow-left,
 .swiper-slide-shadow-right {
   display: none !important;
+}
+
+.c-hero-scene__player {
+  position: relative;
+  top:50%;
+  transform:translateY(-50%);
+  @include media-breakpoint-down(md) {
+    top: 0;
+    left: 50%;
+    height: 100%;
+    transform: translateX(-50%);
+  }
+  video {
+    width: auto;
+    height: 100%;
+    opacity:0;
+    @include media-breakpoint-up(md){
+      width: 100%;
+      height: auto;
+    }
+  }
+  + .c-hero-scene__project {
+    opacity: 0;
+  }
+}
+
+.c-hero-scene__play-icon {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  .c-hero-scene & {
+    @include media-breakpoint-down(sm) {
+      display: none;
+    }
+  }
 }

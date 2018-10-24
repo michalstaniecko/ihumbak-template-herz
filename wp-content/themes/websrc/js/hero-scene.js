@@ -1,3 +1,5 @@
+import {player} from "./player";
+
 class HeroScene {
 	constructor() {
 		this.heroSceneContainer = '.js-hero-scene__swiper-container';
@@ -13,7 +15,33 @@ class HeroScene {
 				shadowOffset: 20,
 				shadowScale: 0.94,
 			},*/
+			on: {
+				init: () => {
+					$(document).ready(()=>{
+						player.playVideo('active');
+					});
+				},
+				transitionEnd: () => {
+				},
+				slideChange: () => {
+				},
+				slideNextTransitionEnd: () => {
+
+					player.pauseVideo('prev');
+				},
+				slidePrevTransitionEnd: () => {
+
+					player.pauseVideo('next');
+				},
+				slideChangeTransitionStart: () => {
+
+					player.playVideo('active');
+				}
+			}
 		});
+	}
+
+	initPlayer() {
 	}
 }
 
