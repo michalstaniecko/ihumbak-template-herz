@@ -26,6 +26,9 @@ function metabox_home_register( $meta_boxes ) {
       'section-3'    => array(
         'label' => 'Section 3',
       ),
+      'logos' => array(
+        'label' => 'Logos'
+      )
     ),
     'fields'     => array(
       array(
@@ -107,6 +110,11 @@ function metabox_home_register( $meta_boxes ) {
             )
           )
         )
+      ),
+      array(
+        'id' => 'logos',
+        'tab' => 'logos',
+        'type' => 'image_advanced',
       )
 
     ),

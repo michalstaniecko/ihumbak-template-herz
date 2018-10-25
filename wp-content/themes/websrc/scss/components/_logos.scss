@@ -5,8 +5,21 @@
   background-color: rgba(#000000, 0.1);
 }
 
+.swiper-wrapper {
+  .c-logos & {
+    align-items: center;
+  }
+}
+
 .swiper-slide {
   .c-logos & {
     text-align: center;
+  }
+}
+
+.c-logos__logo {
+  text-align: center;
+  img {
+    max-width: 100%;
   }
 }

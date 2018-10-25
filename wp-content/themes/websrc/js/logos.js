@@ -9,6 +9,17 @@ class Logos {
 			loop: true,
 			autoplay: {
 				delay: 2000
+			},
+			breakpoints: {
+				480: {
+					slidesPerView: 2
+				},
+				767: {
+					slidesPerView: 3
+				},
+				991: {
+					slidesPerView: 4
+				}
 			}
 		});
 	}
