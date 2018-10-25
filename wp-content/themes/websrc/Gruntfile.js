@@ -100,6 +100,7 @@ module.exports = function (grunt) {
 					//'<%= paths.node %>/flexslider/2.6.1/jquery.flexslider.js',
 					//'<%= paths.node %>/jquery-colorbox/jquery.colorbox.js',
 					'<%= paths.node %>/swiper/dist/js/swiper.min.js',
+					'<%= paths.node %>/skrollr/dist/skrollr.min.js'
 				],
 				dest: '<%= paths.release %>/<%= paths.js %>/vendors.js'
 			}

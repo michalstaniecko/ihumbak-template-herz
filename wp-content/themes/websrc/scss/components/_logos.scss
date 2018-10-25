@@ -3,6 +3,10 @@
   padding-right: 60px;
   height: 226px;
   background-color: rgba(#000000, 0.1);
+  @include media-breakpoint-down(sm) {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
 }
 
 .swiper-wrapper {
@@ -21,5 +25,6 @@
   text-align: center;
   img {
     max-width: 100%;
+    width: 150px;
   }
 }

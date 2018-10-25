@@ -21,6 +21,7 @@
   </div>
   <?php get_footer(); ?>
 </div>
+<?php get_template_part('partials/stones'); ?>
 <?php wp_footer(); ?>
 </body>
 </html>

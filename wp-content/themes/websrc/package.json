@@ -31,6 +31,7 @@
     "load-grunt-config": "^0.19.2",
     "popper.js": "^1.12.9",
     "rollup-plugin-babel": "^3.0.3",
+    "skrollr": "^0.6.26",
     "swiper": "^4.4.1"
   },
   "scripts": {

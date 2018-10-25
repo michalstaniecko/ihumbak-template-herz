@@ -7,6 +7,7 @@ class Logos {
 		this.logosSlider = new Swiper(this.logosSliderContainer, {
 			slidesPerView: 7,
 			loop: true,
+			spaceBetween: 10,
 			autoplay: {
 				delay: 2000
 			},

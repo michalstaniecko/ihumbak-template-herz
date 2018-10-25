@@ -1,0 +1,35 @@
+.c-stones {
+  position: absolute;
+  width: 100%;
+  height: 0;
+  top: 0;
+  z-index: 100;
+  left: 0;
+}
+
+.c-stones__item {
+  position: absolute;
+}
+
+.c-stones__item--big {
+  $size: 200px;
+  width: $size;
+  height: $size;
+  background-color: green;
+}
+
+.c-stones__item--medium {
+
+  $size: 120px;
+  width: $size;
+  height: $size;
+  background-color: red;
+}
+
+.c-stones__item--small {
+
+  $size: 60px;
+  width: $size;
+  height: $size;
+  background-color: yellow;
+}
