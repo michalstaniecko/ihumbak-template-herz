@@ -1,0 +1,10 @@
+main {
+  @extend .pt-section;
+  position: relative;
+}
+
+.page__background {
+  background-image: url('../img/bg-main.jpg');
+  background-repeat: no-repeat;
+  background-position: center top;
+}

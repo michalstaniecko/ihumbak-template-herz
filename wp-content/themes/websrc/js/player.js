@@ -17,11 +17,11 @@ export class Player {
 		if (promise !== undefined) {
 			promise.then(_ => {
 				// Autoplay started!
-				videoToPlay.css('opacity', 1);
-				projectImage.css('opacity', 0);
+				videoToPlay.css('z-index', 2);
+				projectImage.css('z-index', 1);
 				$('.c-hero-scene__play-icon').addClass('d-none');
 			}).catch(error => {
-				projectImage.css('opacity', 1);
+				projectImage.css('z-index', 3);
 				$('.c-hero-scene__play-icon').removeClass('d-none');
 				// Autoplay was prevented.
 				// Show a "Play" button so that user can start playback.

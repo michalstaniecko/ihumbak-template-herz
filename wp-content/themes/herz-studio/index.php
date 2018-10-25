@@ -9,15 +9,18 @@
 </head>
 <body>
 <?php do_action('after_body'); ?>
-<?php get_header(); ?>
-<div class="">
+<div class="page">
 
+  <?php get_header(); ?>
   <?php get_template_part('partials/_hero-scene'); ?>
-  <?php get_template_part('partials/_content'); ?>
-  <?php get_template_part('partials/_logos'); ?>
+  <div class="page__background">
 
+    <?php get_template_part('partials/_content'); ?>
+    <?php get_template_part('partials/_logos'); ?>
+
+  </div>
+  <?php get_footer(); ?>
 </div>
-<?php get_footer(); ?>
 <?php wp_footer(); ?>
 </body>
 </html>
