@@ -6,9 +6,9 @@
   <link rel="profile" href="http://gmpg.org/xfn/11">
   <?php wp_head(); ?>
 </head>
-<body>
+<body <?php body_class(); ?>>
 <?php do_action('after_body'); ?>
-<div class="page">
+<div class="page-wrapper" id="skrollr-body">
 
   <?php get_header(); ?>
   <?php get_template_part('partials/_hero-scene'); ?>
@@ -20,7 +20,7 @@
   </div>
   <?php get_footer(); ?>
 </div>
-<?php get_template_part('partials/stones'); ?>
+<?php get_template_part('partials/_stones'); ?>
 <?php wp_footer(); ?>
 </body>
 </html>

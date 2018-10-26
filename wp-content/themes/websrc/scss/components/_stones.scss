@@ -9,6 +9,10 @@
 
 .c-stones__item {
   position: absolute;
+  overflow: hidden;
+  img {
+    position: relative;
+  }
 }
 
 .c-stones__item--big {
@@ -19,5 +23,9 @@
 }
 
 .c-stones__item--small {
+
+}
+
+.c-stones__item--left {
 
 }

@@ -5,7 +5,7 @@
     &::before {
       content:'';
       display: block;
-      padding-top: 100%;
+      padding-top: 100vh;
     }
   }
   > .container-fluid {
@@ -28,7 +28,7 @@
   &::before {
     content:'';
     display: block;
-    padding-top: (1600 / 1600) * 100%;
+    padding-top: 100vh;
     @include media-breakpoint-up(md){
 
       padding-top: (647 / 1600) * 100%;
