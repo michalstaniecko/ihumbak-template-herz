@@ -7,6 +7,8 @@
  * Time: 15:29
  */
 
+add_theme_support( 'title-tag' );
+
 define('HERZ_IMG',get_stylesheet_directory_uri().'/img');
 
 add_action('wp_enqueue_scripts', 'herz_enqueue_scripts');
