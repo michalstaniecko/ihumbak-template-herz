@@ -1,4 +1,4 @@
-<header class=" c-topbar">
+<header class=" c-topbar c-topbar--top">
   <div class="container-fluid container-fluid-stop">
 
     <div class="row c-topbar__row">

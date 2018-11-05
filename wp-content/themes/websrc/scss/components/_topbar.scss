@@ -1,8 +1,11 @@
 .c-topbar {
-  position: absolute;
+  position: fixed;
   width: 100%;
-  z-index: 10;
+  z-index: 1000;
+  top: 0;
   .container-fluid {
+    background-color: rgba(#212121,0);
+    transition: background-color 0.25s ease-in-out;
     padding-left: 20px;
     padding-right: 20px;
     @include media-breakpoint-up(md) {
@@ -26,4 +29,16 @@
       width: 138px;
     }
   }
+}
+
+.c-topbar--push {
+  .container-fluid {
+
+    background-color: rgba(#212121,1);
+  }
+}
+
+@keyframes topbarAnimation {
+  from {transform: translateY(-100%);}
+  to {transform: translateY(0)}
 }

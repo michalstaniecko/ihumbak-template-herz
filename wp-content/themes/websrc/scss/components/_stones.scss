@@ -8,10 +8,18 @@
 
 .c-stones--left {
   left:0;
+  @include media-breakpoint-up(xxl) {
+    left: 50%;
+    margin-left: - $container-width / 2;
+  }
 }
 
 .c-stones--right {
   right: 0;
+  @include media-breakpoint-up(xxl) {
+    right: 50%;
+    margin-right: - $container-width / 2;
+  }
 }
 
 .c-stones__item {

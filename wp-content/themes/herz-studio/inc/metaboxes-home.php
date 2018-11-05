@@ -148,9 +148,13 @@ function metabox_home_register( $meta_boxes ) {
               ),
               array(
                 'id' => 'left',
-                'name' => 'Left',
+                'name' => 'Left Container',
                 'type' => 'text',
-                'step' => 'any'
+              ),
+              array(
+                'id' => 'left-image',
+                'name' => 'Image position in container',
+                'type' => 'text'
               ),
               array(
                 'id' => 'scroll',
@@ -183,9 +187,14 @@ function metabox_home_register( $meta_boxes ) {
               ),
               array(
                 'id' => 'right',
-                'name' => 'Right',
+                'name' => 'Right Container',
                 'type' => 'text',
                 'step' => 'any'
+              ),
+              array(
+                'id' => 'right-image',
+                'name' => 'Image position in container',
+                'type' => 'text'
               ),
               array(
                 'id' => 'scroll',
