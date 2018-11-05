@@ -85,5 +85,8 @@ $projects = new WP_Query( $args );
       </div>
     </div>
   </div>
+  <div class="c-scroll-down">
+    <img src="<?= HERZ_IMG ?>/icons/down.png" />
+  </div>
 
 </div>

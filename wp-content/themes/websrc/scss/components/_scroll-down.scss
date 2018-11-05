@@ -1,0 +1,17 @@
+.c-scroll-down {
+  @include media-breakpoint-up(lg) {
+    display: none;
+  }
+
+  text-align: center;
+  padding-bottom: 22px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 90;
+
+  img {
+    width: 35px;
+  }
+}

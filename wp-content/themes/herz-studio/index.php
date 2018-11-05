@@ -8,7 +8,7 @@
 </head>
 <body <?php body_class(); ?>>
 <?php do_action('after_body'); ?>
-<div class="page-wrapper" id="skrollr-body">
+<div class="page-wrapper" id="">
 
   <?php get_header(); ?>
   <?php get_template_part('partials/_hero-scene'); ?>

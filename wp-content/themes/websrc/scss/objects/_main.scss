@@ -1,10 +1,17 @@
 main {
   @extend .pt-section;
   position: relative;
+  @include media-breakpoint-down(md) {
+    padding-top: 20px !important;
+  }
 }
 
 .page__background {
   background-image: url('../img/bg-main.jpg');
   background-repeat: no-repeat;
   background-position: center top;
+  @include media-breakpoint-down(md) {
+    -webkit-background-size: cover;
+    background-size: cover;
+  }
 }

@@ -1,5 +1,9 @@
 .o-section {
   @extend .py-section;
+  @include media-breakpoint-down(md) {
+    padding-top: 50px !important;
+    padding-bottom: 50px !important;
+  }
 }
 
 .o-section-stop {
@@ -8,4 +12,13 @@
   width: 100%;
   margin-left: auto;
   margin-right: auto;
+}
+
+.o-section--columns {
+  @include media-breakpoint-down(sm) {
+
+    > div + div {
+      margin-top: 25px;
+    }
+  }
 }

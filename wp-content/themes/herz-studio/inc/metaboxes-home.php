@@ -28,6 +28,9 @@ function metabox_home_register( $meta_boxes ) {
       ),
       'logos' => array(
         'label' => 'Logos'
+      ),
+      'stones' => array(
+        'label' => 'Stones'
       )
     ),
     'fields'     => array(
@@ -115,6 +118,84 @@ function metabox_home_register( $meta_boxes ) {
         'id' => 'logos',
         'tab' => 'logos',
         'type' => 'image_advanced',
+      ),
+      array(
+        'id' => 'stones',
+        'tab' => 'stones',
+        'type' => 'group',
+
+        'fields' => array(
+          array(
+            'id' => 'stone-left',
+            'type' => 'group',
+            'name' => 'Left Side',
+            'clone' => true,
+            'columns' => 6,
+            'sort_clone' => true,
+
+            'fields' => array(
+              array(
+                'id' => 'image',
+                'name' => 'Image',
+                'type' => 'image_advanced'
+              ),
+              array(
+                'id' => 'top',
+                'name' => 'Top',
+                'description' => 'Percentage of page height',
+                'type' => 'text',
+
+              ),
+              array(
+                'id' => 'left',
+                'name' => 'Left',
+                'type' => 'text',
+                'step' => 'any'
+              ),
+              array(
+                'id' => 'scroll',
+                'name' => 'Scroll',
+                'type' => 'text',
+                'step' => 'any'
+              )
+            )
+          ),
+          array(
+            'id' => 'stone-right',
+            'type' => 'group',
+            'name' => 'Right Side',
+            'clone' => true,
+            'columns' => 6,
+            'sort_clone' => true,
+
+            'fields' => array(
+              array(
+                'id' => 'image',
+                'name' => 'Image',
+                'type' => 'image_advanced'
+              ),
+              array(
+                'id' => 'top',
+                'name' => 'Top',
+                'type' => 'text',
+                'description' => 'Percentage of page height',
+
+              ),
+              array(
+                'id' => 'right',
+                'name' => 'Right',
+                'type' => 'text',
+                'step' => 'any'
+              ),
+              array(
+                'id' => 'scroll',
+                'name' => 'Scroll',
+                'type' => 'text',
+                'step' => 'any'
+              )
+            )
+          )
+        )
       )
 
     ),

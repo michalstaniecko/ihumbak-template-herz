@@ -1,11 +1,23 @@
 html {
   -webkit-font-smoothing: antialiased;
-  font-size: 20px;
+  font-size: 15px;
+  @include media-breakpoint-up(lg) {
+
+    font-size: 20px;
+  }
+  &.skrollr-mobile {
+    overflow: auto !important;
+    body {
+      overflow-y: auto !important;
+    }
+  }
 }
 
 body {
   font-family: $primary-font;
   font-weight: 300;
+  position: relative;
+  overflow-x: hidden;
 }
 
 h1 {
@@ -16,7 +28,19 @@ h2 {
   font-weight: 300;
   text-transform: uppercase;
   letter-spacing: 5px;
-  .o-section--columns & {
-    margin-bottom: 50px;
+  .o-section & {
+    margin-bottom: 35px;
+    @include media-breakpoint-up(lg) {
+
+      margin-bottom: 50px;
+    }
+  }
+
+  font-size: 25px;
+  line-height: 30px;
+  @include media-breakpoint-up(lg) {
+    font-size: 42px;
+    line-height: 50px;
   }
 }
+
