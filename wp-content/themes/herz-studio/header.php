@@ -1,3 +1,6 @@
+<?php if (WP_DEBUG): ?>
+<div class="debuger"></div>
+<?php endif; ?>
 <header class=" c-topbar c-topbar--top">
   <div class="container-fluid container-fluid-stop">
 

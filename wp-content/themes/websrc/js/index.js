@@ -3,3 +3,4 @@ import './logos';
 import './player';
 import './parallax';
 import './top-bar';
+//import './example';

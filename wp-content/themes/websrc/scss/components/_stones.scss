@@ -25,6 +25,7 @@
 .c-stones__item {
   position: absolute;
   overflow: hidden;
+  transition: top 0.1s ease;
   img {
     position: relative;
   }
