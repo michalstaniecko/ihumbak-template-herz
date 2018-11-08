@@ -42,7 +42,6 @@ foreach ( $stones_raw['stone-right'] as $s ) {
          data-start="<?= $stone['top'] ?>" data-stop="<?= $stone['top'] / $stone['scroll'] ?>" data-scroll="<?= $stone['scroll'] ?>">
       <img src="<?= $stone['image'] ?>" style="left: <?= $stone['image-position'] ?>px" />
     </div>
-  <?php break; ?>
   <?php endforeach; ?>
 
 </div>

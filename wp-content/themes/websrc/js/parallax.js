@@ -4,47 +4,64 @@ class Parallax {
 		this.$stones = $('.js-stones__item');
 		this.afterDocumentScrolled = $(window).scrollTop();
 		this.windowHeight = $(window).height();
+		this.documentBottom = $('footer').outerHeight() + $('footer').offset().top;
 
 		setInterval(() => {
 			this.topWindowEdge = $(window).scrollTop();
 			this.bottomWindowEdge = this.topWindowEdge + this.windowHeight;
 			this.scrollTop = $(window).scrollTop() - this.afterDocumentScrolled;
-			this.documentHeight = $('body').height();
+			this.scrollDown = this.scrollTop > 0;
+			this.ScrollUp = this.scrollTop < 0;
+			this.documentBottom = $('footer').outerHeight() + $('footer').offset().top;
 
 			this.scrollTopPercent = (this.scrollTop / this.documentHeight) * 100;
 			this.windowHeight = $(window).height();
 			this.windowHeightPercent = (this.windowHeight / this.documentHeight) * 100;
+
 			this.$stones.each((index, element) => {
 				this.stoneAnimation(element);
 			});
 
-			var document_window = this.documentHeight - this.windowHeight;
-			this.document_window_scrollTop  = $(window).scrollTop() / document_window;
 
 			this.afterDocumentScrolled = $(window).scrollTop();
 
-		}, 10);
+		}, 1);
 	}
 
 	stoneAnimation(element) {
 		var $stone = $(element);
-		var positionStart = ($stone.data('start') / 100) * this.documentHeight;
-		var positionStop = ($stone.data('stop') / 100) * this.documentHeight;
 		var scrollRatio = $stone.data('scroll');
-		var documentTopPercent = this.scrollTop / this.documentHeight;
 
-		var cssTop = parseInt($stone.css('top')) / this.documentHeight;
-		$('.debuger').html(cssTop + ', ' + this.windowHeight);
-		var cssTopAfterScroll = $stone.offset().top * this.document_window_scrollTop;
 		var topStoneEdge = $stone.offset().top;
-		var bottomStoneEdge = topStoneEdge + $stone.outerHeight();
-		if (topStoneEdge < this.bottomWindowEdge && bottomStoneEdge > this.topWindowEdge) {
+		var stoneHeight = $stone.outerHeight();
+		var bottomStoneEdge = topStoneEdge + stoneHeight;
+		var stoneInDocument = (bottomStoneEdge < this.documentBottom && topStoneEdge > 0);
+		var stoneInViewport = (topStoneEdge < this.bottomWindowEdge && bottomStoneEdge > this.topWindowEdge);
+		var stoneUnderViewport = (topStoneEdge > this.bottomWindowEdge);
+		var stoneAboveViewport = (bottomStoneEdge < this.topWindowEdge);
 
-			$stone.css('top', ((this.documentHeight - this.windowHeight - 1500) * this.document_window_scrollTop) + positionStart + 'px');
-		} else if (topStoneEdge > this.bottomWindowEdge) {
-			//$stone.css('top', positionStart);
-		} else if (bottomStoneEdge < this.topWindowEdge) {
+
+		var positionStart = ($stone.data('start') / 100) * this.documentBottom;
+
+		var positionAfterScroll = positionStart + this.topWindowEdge;
+
+		if (positionAfterScroll + this.scrollTop + stoneHeight > this.documentBottom) {
+			return false
 		}
+
+		if (positionAfterScroll + this.scrollTop < 0) {
+			return false;
+		}
+
+		if (stoneInViewport) {
+			if (this.scrollDown) {
+			}
+			if (this.scrollTop) {
+			}
+			$stone.css('top', positionAfterScroll + 'px');
+		}
+
+		//$('.debuger').html(this.documentBottom + ', ' + (positionAfterScroll + stoneHeight + this.scrollTop));
 	}
 }
 
