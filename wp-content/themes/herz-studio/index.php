@@ -6,22 +6,24 @@
   <link rel="profile" href="http://gmpg.org/xfn/11">
   <?php wp_head(); ?>
 </head>
-<body <?php body_class(); ?>>
+<body <?php body_class(); ?> >
 <?php do_action('after_body'); ?>
 
-<?php get_header(); ?>
-<div class="page-wrapper" id="">
+  <?php get_header(); ?>
+  <div class="page-wrapper" id="" >
 
-  <?php get_template_part('partials/_hero-scene'); ?>
-  <div class="page__background">
+    <?php get_template_part('partials/_hero-scene'); ?>
+    <div class="page__background" >
 
-    <?php get_template_part('partials/_content'); ?>
-    <?php get_template_part('partials/_logos'); ?>
+      <?php get_template_part('partials/_content'); ?>
+      <?php get_template_part('partials/_logos'); ?>
 
+    </div>
+    <?php get_footer(); ?>
+    <?php get_template_part('partials/_stones'); ?>
   </div>
-  <?php get_footer(); ?>
-</div>
-<?php get_template_part('partials/_stones'); ?>
-<?php wp_footer(); ?>
+
+  <?php wp_footer(); ?>
+
 </body>
 </html>

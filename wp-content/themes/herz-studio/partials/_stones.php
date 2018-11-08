@@ -36,13 +36,14 @@ foreach ( $stones_raw['stone-right'] as $s ) {
 
 <div class="c-stones c-stones--left">
 
-  <?php foreach ( $stones['left'] as $stone ): ?>
+  <?php  foreach ( $stones['left'] as $stone ): ?>
     <div class="c-stones__item c-stones__item--big c-stones__item--left js-stones__item" id="stone-1"
          style="top: <?= $stone['top'] ?>%; left: <?= $stone['edge'] ?>;"
+         data-bottom-top="top:<?=$stone['top']?>%" data-top-bottom="top: <?= $stone['top'] / $stone['scroll'] ?>%"
          data-start="<?= $stone['top'] ?>" data-stop="<?= $stone['top'] / $stone['scroll'] ?>" data-scroll="<?= $stone['scroll'] ?>">
       <img src="<?= $stone['image'] ?>" style="left: <?= $stone['image-position'] ?>px" />
     </div>
-  <?php endforeach; ?>
+  <?php endforeach;  ?>
 
 </div>
 <?php /*
