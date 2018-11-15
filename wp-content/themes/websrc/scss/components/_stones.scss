@@ -1,17 +1,8 @@
 .c-stones {
-  position: absolute;
-  width: 0;
-  height: 100%;
-  top: 0;
-  z-index: 100;
+
 }
 
 .c-stones--left {
-  left:0;
-  @include media-breakpoint-up(xxl) {
-    left: 50%;
-    margin-left: - $container-width / 2;
-  }
 }
 
 .c-stones--right {
@@ -24,10 +15,25 @@
 
 .c-stones__item {
   position: absolute;
-  overflow: hidden;
+  z-index: 100;
   //background-color: red;
   img {
     position: relative;
+  }
+  @include media-breakpoint-down(md) {
+    display: none;
+  }
+}
+
+.c-stones__item-wrapper {
+  position: absolute;
+  top: 0;
+  overflow: hidden;
+  .c-stones__item--left & {
+    left: 0;
+  }
+  .c-stones__item--right & {
+    right: 0;
   }
 }
 
@@ -44,4 +50,17 @@
 
 .c-stones__item--left {
 
+  left:0;
+  @include media-breakpoint-up(xxl) {
+    left: 50%;
+    margin-left: - $container-width / 2;
+  }
+}
+.c-stones__item--right {
+
+  right:0;
+  @include media-breakpoint-up(xxl) {
+    right: 50%;
+    margin-right: - $container-width / 2;
+  }
 }

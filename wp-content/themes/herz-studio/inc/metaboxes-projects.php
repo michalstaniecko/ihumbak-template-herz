@@ -28,8 +28,15 @@ function metabox_projects_register( $meta_boxes ) {
         )
       ),
       array(
-        'name'=> 'Image',
+        'name'=> 'Image Desktop',
         'id' => 'image',
+        'type' => 'image_advanced',
+        'max_file_uploads' => 1,
+      ),
+      array(
+
+        'name'=> 'Image Mobile',
+        'id' => 'image-mobile',
         'type' => 'image_advanced',
         'max_file_uploads' => 1,
       ),

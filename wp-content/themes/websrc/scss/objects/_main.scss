@@ -1,6 +1,7 @@
 main {
   @extend .pt-section;
   position: relative;
+  z-index: 2;
   @include media-breakpoint-down(md) {
     padding-top: 20px !important;
   }

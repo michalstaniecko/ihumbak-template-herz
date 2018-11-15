@@ -161,6 +161,18 @@ function metabox_home_register( $meta_boxes ) {
                 'name' => 'Scroll',
                 'type' => 'text',
                 'step' => 'any'
+              ),
+              array(
+                'id' => 'z-index',
+                'name' => 'Layer Position',
+                'type' => 'select_advanced',
+
+                'options' => array(
+                  'under' => 'Under',
+                  'above' => 'Above'
+                ),
+
+                'std' => 'above'
               )
             )
           ),
@@ -201,6 +213,18 @@ function metabox_home_register( $meta_boxes ) {
                 'name' => 'Scroll',
                 'type' => 'text',
                 'step' => 'any'
+              ),
+              array(
+                'id' => 'z-index',
+                'name' => 'Layer Position',
+                'type' => 'select_advanced',
+
+                'options' => array(
+                  'under' => 'Under',
+                  'above' => 'Above'
+                ),
+
+                'std' => 'above'
               )
             )
           )

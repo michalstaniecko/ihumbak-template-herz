@@ -18,9 +18,10 @@
       <?php get_template_part('partials/_content'); ?>
       <?php get_template_part('partials/_logos'); ?>
 
+      <?php get_template_part('partials/_stones'); ?>
+
     </div>
     <?php get_footer(); ?>
-    <?php get_template_part('partials/_stones'); ?>
   </div>
 
   <?php wp_footer(); ?>

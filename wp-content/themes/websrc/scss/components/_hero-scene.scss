@@ -62,6 +62,18 @@
     height: auto;
     width: 100%;
   }
+  @include media-breakpoint-down(md) {
+    &:not(.c-hero-scene__project--mobile) {
+
+      display: none;
+    }
+  }
+}
+
+.c-hero-scene__project--mobile {
+  @include media-breakpoint-up(lg) {
+    display: none;
+  }
 }
 
 .c-hero-scene__lead {
