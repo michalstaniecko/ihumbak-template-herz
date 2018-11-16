@@ -44,7 +44,7 @@ $projects = new WP_Query( $args );
           $project_type = rwmb_meta( 'type' );
           ?>
           <div class="swiper-slide c-hero-scene__slider c-hero-scene__slider--<?= $project_type ?>">
-            <div class="c-hero-scene__project-wrapper" >
+            <a href="#" target="_blank" class="c-hero-scene__project-wrapper" >
               <?php switch ( $project_type ) :
 
 
@@ -62,7 +62,7 @@ $projects = new WP_Query( $args );
 
               <img src="<?= $image['full_url'] ?>" class="c-hero-scene__project"/>
               <img src="<?= $image_mobile['full_url'] ?>" class="c-hero-scene__project c-hero-scene__project--mobile" />
-            </div>
+            </a>
           </div>
         <?php endwhile;
           wp_reset_query(); endif; ?>

@@ -4,14 +4,21 @@
   z-index: 1000;
   top: 0;
   .container-fluid {
-    background-color: rgba(#212121,0);
-    transition: background-color 0.25s ease-in-out;
-    padding-left: 20px;
-    padding-right: 20px;
-    @include media-breakpoint-up(md) {
-      padding-left: 60px;
-      padding-right: 60px;
-    }
+    padding: 2px;
+  }
+}
+.c-topbar__wrapper {
+  background-color: rgba(#212121,0);
+  padding-left: 20px;
+  padding-right: 20px;
+  @include media-breakpoint-up(md) {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+  transition: background-color 0.25s ease-in-out;
+  .c-topbar--push & {
+
+    background-color: rgba(#212121,1);
   }
 }
 
@@ -31,12 +38,6 @@
   }
 }
 
-.c-topbar--push {
-  .container-fluid {
-
-    background-color: rgba(#212121,1);
-  }
-}
 
 @keyframes topbarAnimation {
   from {transform: translateY(-100%);}

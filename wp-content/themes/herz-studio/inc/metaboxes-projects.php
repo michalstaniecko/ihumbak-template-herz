@@ -28,6 +28,11 @@ function metabox_projects_register( $meta_boxes ) {
         )
       ),
       array(
+        'name' => 'Link to project',
+        'id' => 'url',
+        'type' => ''
+      ),
+      array(
         'name'=> 'Image Desktop',
         'id' => 'image',
         'type' => 'image_advanced',
