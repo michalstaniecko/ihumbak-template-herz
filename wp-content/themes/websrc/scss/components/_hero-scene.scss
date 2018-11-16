@@ -47,6 +47,18 @@
   -webkit-background-size: cover;
   background-repeat: no-repeat;
   background-size: cover;
+  .c-hero-scene__slider--video & {
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: 0;
+      z-index: 9;
+    }
+  }
 }
 
 .c-hero-scene__project {

@@ -1,4 +1,4 @@
-<footer class="container-fluid container-fluid-stop  text-white c-footer">
+<footer class="container-fluid container-fluid-stop  text-white c-footer" id="contact">
   <div class="row">
     <div class="text-center col-auto mx-auto">
       <img src="<?= HERZ_IMG ?>/herz-logo-footer.png" />

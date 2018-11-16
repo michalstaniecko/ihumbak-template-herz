@@ -30,7 +30,7 @@ function metabox_projects_register( $meta_boxes ) {
       array(
         'name' => 'Link to project',
         'id' => 'url',
-        'type' => ''
+        'type' => 'text'
       ),
       array(
         'name'=> 'Image Desktop',
