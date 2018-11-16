@@ -9,7 +9,8 @@ class Logos {
 			loop: true,
 			spaceBetween: 10,
 			autoplay: {
-				delay: 2000
+				delay: 2000,
+				disableOnInteraction: false,
 			},
 			breakpoints: {
 				480: {
