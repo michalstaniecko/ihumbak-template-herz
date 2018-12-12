@@ -182,3 +182,15 @@
     }
   }
 }
+
+.c-hero-scene__video--desktop {
+  @include media-breakpoint-down(md) {
+    display: none;
+  }
+}
+
+.c-hero-scene__video--mobile {
+  @include media-breakpoint-up(lg) {
+    display: none;
+  }
+}

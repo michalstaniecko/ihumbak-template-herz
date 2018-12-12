@@ -21,25 +21,27 @@ class HeroScene {
 			loop: true,
 			on: {
 				init: () => {
-					$(document).ready(()=>{
-						player.playVideo('active');
+					$(document).ready(() => {
+						player.playVideo('active', true);
 					});
 				},
 				transitionEnd: () => {
+
 				},
 				slideChange: () => {
 				},
 				slideNextTransitionEnd: () => {
 
-					player.pauseVideo('prev');
+					//player.pauseVideo('prev');
 				},
 				slidePrevTransitionEnd: () => {
 
-					player.pauseVideo('next');
+					//player.pauseVideo('next');
 				},
 				slideChangeTransitionStart: () => {
-
 					player.playVideo('active');
+					player.pauseVideo('prev');
+					player.pauseVideo('next');
 				}
 			}
 		});

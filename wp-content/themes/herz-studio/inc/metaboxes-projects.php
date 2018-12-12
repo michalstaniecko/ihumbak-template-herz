@@ -60,10 +60,53 @@ function metabox_projects_register( $meta_boxes ) {
       array(
         'name' => 'Upload Video',
         'id' => 'video',
-        'type' => 'file_advanced',
-        'max_file_uploads'=> 1,
-        'visible' => array('type', '=', 'video')
-      )
+        'type'=>'group',
+        'visible' => array('type', '=', 'video'),
+        'fields' => array(
+          array(
+
+            'name' => 'Desktop WEBM',
+            'id' => 'video-d-webm',
+            'type' => 'file_advanced',
+            'max_file_uploads'=> 1,
+          ),
+          array(
+
+            'name' => 'Desktop MP4',
+            'id' => 'video-d-mp4',
+            'type' => 'file_advanced',
+            'max_file_uploads'=> 1,
+          ),
+          array(
+
+            'name' => 'Desktop OGV',
+            'id' => 'video-d-ogv',
+            'type' => 'file_advanced',
+            'max_file_uploads'=> 1,
+          ),
+          array(
+
+            'name' => 'Mobile WEBM',
+            'id' => 'video-m-webm',
+            'type' => 'file_advanced',
+            'max_file_uploads'=> 1,
+          ),
+          array(
+
+            'name' => 'Mobile MP4',
+            'id' => 'video-m-mp4',
+            'type' => 'file_advanced',
+            'max_file_uploads'=> 1,
+          ),
+          array(
+
+            'name' => 'Mobile OGV',
+            'id' => 'video-m-ogv',
+            'type' => 'file_advanced',
+            'max_file_uploads'=> 1,
+          )
+        )
+      ),
     )
   );
 
