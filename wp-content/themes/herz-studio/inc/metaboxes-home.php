@@ -31,6 +31,9 @@ function metabox_home_register( $meta_boxes ) {
       ),
       'stones' => array(
         'label' => 'Stones'
+      ),
+      'footer' => array(
+        'label' => 'Footer'
       )
     ),
     'fields'     => array(
@@ -227,6 +230,24 @@ function metabox_home_register( $meta_boxes ) {
                 'std' => 'above'
               )
             )
+          )
+        )
+      ),
+      array(
+        'id' => 'footer',
+        'tab' => 'footer',
+        'type' => 'group',
+
+        'fields' => array(
+          array(
+            'name' => 'Lead Text',
+            'id' => 'lead',
+            'type' => 'text'
+          ),
+          array(
+            'name' => 'Contact',
+            'id' => 'contact',
+            'type' => 'textarea'
           )
         )
       )

@@ -7,7 +7,7 @@
   -webkit-background-size: cover;
   background-size: cover;
   img {
-    margin-bottom: 50px;
+
   }
   a {
     color: inherit;
@@ -21,9 +21,9 @@
       position: absolute;
       display: block;
       width: 0;
-      bottom: 0;
+      bottom: 2px;
       height: 1px;
-      background-color: $white;
+      background-color: #666666;
       transition: width 0.2s ease;
     }
     &::before {
@@ -41,4 +41,20 @@
       }
     }
   }
+}
+
+.c-footer__lead {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  letter-spacing: .15px;
+  line-height: 28px;
+}
+
+.c-footer__contact {
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 30px;
+  color: #666666;
+  line-height: 21px;
+  letter-spacing: .14px;
 }
