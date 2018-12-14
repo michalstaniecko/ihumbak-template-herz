@@ -106,7 +106,7 @@ $projects = new WP_Query( $args );
       </div>
 
       <div class="c-hero-scene__play-icon d-none">
-        <span class="h1 text-secondary">play</span>
+        <img src="<?= HERZ_IMG ?>/play-button.png" srcset="<?= HERZ_IMG ?>/play-button.png 1x, <?= HERZ_IMG ?>/play-button@x2.png 2x" />
       </div>
     </div>
   </div>

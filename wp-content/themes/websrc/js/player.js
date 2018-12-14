@@ -32,11 +32,11 @@ class Player {
 					$('.c-hero-scene__play-icon').addClass('d-none');
 				}
 			}).catch(error => {
+				projectImage.css('z-index', 3);
+
+				$('.c-hero-scene__play-icon').removeClass('d-none');
 				if (isInit) {
 
-					projectImage.css('z-index', 3);
-
-					$('.c-hero-scene__play-icon').removeClass('d-none');
 
 					// Autoplay was prevented.
 					// Show a "Play" button so that user can start playback.
@@ -60,13 +60,13 @@ class Player {
 		var $desktop = $('video.c-hero-scene__video--desktop');
 		mq.addListener((_mq) => {
 			if (_mq) {
-				console.log('portrait')
 				$desktop[0].pause();
 				time = $desktop[0].currentTime;
+				console.log(time);
 			} else {
-			console.log('landscape');
 				$mobile[0].pause();
 				time = $mobile[0].currentTime;
+				console.log('landscape', time);
 			}
 
 			this.playVideo('active', false, time);

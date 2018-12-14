@@ -189,6 +189,16 @@
   left: 50%;
   transform: translateX(-50%);
   z-index: 100;
+  @media (orientation: landscape) {
+    @include media-breakpoint-down(sm) {
+      left: auto;
+      right: 40px;
+      bottom: 20px;
+      img {
+        width: 50px;
+      }
+    }
+  }
 }
 
 .swiper-button-prev,
