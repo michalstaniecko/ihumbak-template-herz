@@ -3,13 +3,14 @@ class Player {
 		this.$playerYoutubeContainers = $('.c-hero-scene__player--youtube');
 		this.$playerVideoContainers = $('.c-hero-scene__player--video');
 		this.firePlayVideo();
+		this.toggleVideo();
 	}
 
-	playVideo(targetSlide, isInit = false) {
+	playVideo(targetSlide, isInit = false, time=0) {
 		var $slide = $('.c-hero-scene__slider--video.swiper-slide-' + targetSlide);
 		$('.c-hero-scene__play-icon').addClass('d-none');
 		if (!$slide.length) return false;
-		var mq = window.matchMedia('(max-width: 991px)');
+		var mq = window.matchMedia('(orientation: portrait)');
 		if (mq.matches) {
 			var videoToPlay = $slide.find('video.c-hero-scene__video--mobile');
 		} else {
@@ -17,6 +18,7 @@ class Player {
 			var videoToPlay = $slide.find('video.c-hero-scene__video--desktop');
 		}
 		var projectImage = $slide.find('.c-hero-scene__project');
+		videoToPlay[0].currentTime = time;
 		var promise = videoToPlay[0].play();
 
 
@@ -48,6 +50,27 @@ class Player {
 			$('.c-hero-scene__play-icon').addClass('d-none');
 		}
 
+	}
+
+	toggleVideo() {
+		console.log('togglevideo');
+		var mq = window.matchMedia('(orientation: portrait)');
+		var time;
+		var $mobile = $('video.c-hero-scene__video--mobile');
+		var $desktop = $('video.c-hero-scene__video--desktop');
+		mq.addListener((_mq) => {
+			if (_mq) {
+				console.log('portrait')
+				$desktop[0].pause();
+				time = $desktop[0].currentTime;
+			} else {
+			console.log('landscape');
+				$mobile[0].pause();
+				time = $mobile[0].currentTime;
+			}
+
+			this.playVideo('active', false, time);
+		})
 	}
 
 	pauseVideo(targetSlide) {

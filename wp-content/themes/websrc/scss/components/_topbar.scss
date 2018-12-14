@@ -11,9 +11,10 @@
   padding-left: 20px;
   padding-right: 20px;
   background-color: rgba(#212121,0);
-  @include media-breakpoint-up(md) {
+  @media (orientation: landscape) {
     padding-left: 60px;
     padding-right: 60px;
+
   }
   transition: background-color 0.25s ease-in-out;
   .scrolled & {
@@ -25,15 +26,23 @@
 .c-topbar__row {
   height: 66px;
   align-items: center;
-  @include media-breakpoint-up(lg) {
-    height: 125px;
+  @media (orientation: landscape) {
+    @include media-breakpoint-up(md){
+
+      height: 125px;
+    }
+
   }
+
 }
 
 .c-topbar__logo {
-  @include media-breakpoint-down(md) {
-    img {
-      width: 138px;
+  @media (orientation: portrait) {
+    @include media-breakpoint-down(sm) {
+
+      img {
+        width: 138px;
+      }
     }
   }
 }
