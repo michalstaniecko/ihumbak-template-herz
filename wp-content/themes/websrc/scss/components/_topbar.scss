@@ -14,7 +14,10 @@
   @media (orientation: landscape) {
     padding-left: 60px;
     padding-right: 60px;
-
+    @include media-breakpoint-down(sm) {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
   }
   transition: background-color 0.25s ease-in-out;
   .scrolled & {

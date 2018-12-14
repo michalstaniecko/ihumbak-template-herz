@@ -53,7 +53,6 @@ class Player {
 	}
 
 	toggleVideo() {
-		console.log('togglevideo');
 		var mq = window.matchMedia('(orientation: portrait)');
 		var time;
 		var $mobile = $('video.c-hero-scene__video--mobile');
@@ -62,11 +61,9 @@ class Player {
 			if (_mq) {
 				$desktop[0].pause();
 				time = $desktop[0].currentTime;
-				console.log(time);
 			} else {
 				$mobile[0].pause();
 				time = $mobile[0].currentTime;
-				console.log('landscape', time);
 			}
 
 			this.playVideo('active', false, time);

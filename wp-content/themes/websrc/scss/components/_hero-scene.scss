@@ -107,6 +107,9 @@
   @media (orientation: landscape) {
 
     top: 125px;
+    @include media-breakpoint-down(sm) {
+      top: 80px;
+    }
   }
   > .container-fluid {
     padding-left: 0;
@@ -122,6 +125,9 @@
   @media (orientation: landscape) {
 
     padding-left: 60px;
+    @include media-breakpoint-down(sm){
+      padding-left: 20px;
+    }
   }
   h1  {
     $font-size: 70px;
@@ -137,6 +143,11 @@
     @include media-breakpoint-up(xxl) {
 
       font-size: $font-size;
+    }
+    @media (orientation: landscape) {
+      @include media-breakpoint-down(sm) {
+        font-size: 30px;
+      }
     }
   }
 }
@@ -191,8 +202,6 @@
   z-index: 100;
   @media (orientation: landscape) {
     @include media-breakpoint-down(sm) {
-      left: auto;
-      right: 40px;
       bottom: 20px;
       img {
         width: 50px;
