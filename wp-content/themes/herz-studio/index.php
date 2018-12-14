@@ -10,7 +10,7 @@
 <?php do_action('after_body'); ?>
 
   <?php get_header(); ?>
-  <div class="page-wrapper" id="" >
+  <div class="page-wrapper" id="page-wrapper" >
 
     <?php get_template_part('partials/_hero-scene'); ?>
     <div class="page__background" >

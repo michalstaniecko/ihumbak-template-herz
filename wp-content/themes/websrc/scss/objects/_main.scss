@@ -11,6 +11,9 @@ main {
   background-image: url('../img/bg-main.jpg');
   background-repeat: no-repeat;
   background-position: center top;
+  margin-top:-2px;
+  position: relative;
+  z-index: 999;
   @include media-breakpoint-down(md) {
     -webkit-background-size: cover;
     background-size: cover;

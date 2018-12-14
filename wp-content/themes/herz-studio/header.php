@@ -1,7 +1,7 @@
 <?php if ( WP_DEBUG ): ?>
   <div class="debuger"></div>
 <?php endif; ?>
-<header class=" c-topbar c-topbar--top">
+<header class=" c-topbar c-topbar--top" id="topbar">
   <div class="container-fluid container-fluid-stop">
     <div class="c-topbar__wrapper">
 

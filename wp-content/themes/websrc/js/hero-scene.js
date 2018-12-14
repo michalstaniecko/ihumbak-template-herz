@@ -8,7 +8,7 @@ class HeroScene {
 	initSlider() {
 		var isOneSlide = $('.c-hero-scene__slider').length > 1;
 		var swipeOptions = {};
-		if (isOneSlide) {
+		if (!isOneSlide) {
 			swipeOptions = {
 				loop: false,
 
