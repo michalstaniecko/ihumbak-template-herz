@@ -16,6 +16,7 @@ function metabox_home_register( $meta_boxes ) {
     'title'      => 'Home',
     'post_types' => 'page',
     'context'    => 'normal',
+    'revision' => true,
     'tabs'      => array(
       'section-1' => array(
         'label' => 'Section 1',
