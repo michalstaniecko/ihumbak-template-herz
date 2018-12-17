@@ -2,14 +2,37 @@ jQuery( function ( $ ) {
 	'use strict';
 
 	// Global variables
-	var $pageTemplate = $( '#page_template ' ),
-		$postFormat = $( 'input[name="post_format"]' ),
-		$parent = $( '#parent_id' );
+	var $parent = $( '#parent_id' );
+
+	// List of selectors for each type of element.
+	// Made for compatibility with classic and Gutenberg editors.
+	var selectors = {
+		'template': ['#page_template', '.editor-page-attributes__template .components-select-control__input'],
+		'post_format': ['input[name="post_format"]', '.editor-post-format .components-select-control__input'],
+		'parent': ['#parent_id'], // No selector in Gutenberg, thus not working.
+	};
+	var elements = {};
+
+	var $document = $( document );
+
+	var initialCheck = false;
+
+	function initElements() {
+		_.forEach( selectors, function( list, key ) {
+			var selector = _.find( list, function( selector ) {
+				return $( selector ).length;
+			} );
+			elements[key] = $( selector );
+		} );
+	}
 
 	// Callback functions to check for each condition
 	var checkCallbacks = {
 		template   : function ( templates ) {
-			return -1 != templates.indexOf( $pageTemplate.val() );
+			var value = initialCheck ? elements.template.val() : MBShowHideData.template,
+				result = -1 !== templates.indexOf( value );
+			console.log( 'Check by template:', result );
+			return result;
 		},
 		post_format: function ( formats ) {
 			// Make sure registered formats in lowercase
@@ -17,12 +40,17 @@ jQuery( function ( $ ) {
 				return format.toLowerCase();
 			} );
 
-			var value = $postFormat.filter( ':checked' ).val();
+			var value = MBShowHideData.post_format;
+			if ( initialCheck ) {
+				value = elements.post_format.is( 'select' ) ? elements.post_format.val() : elements.post_format.filter( ':checked' ).val();
+			}
 			if ( !value || 0 == value ) {
 				value = 'standard';
 			}
 
-			return -1 != formats.indexOf( value );
+			var result = -1 != formats.indexOf( value );
+			console.log( 'Check by post format:', result );
+			return result;
 		},
 		taxonomy   : function ( taxonomy, terms ) {
 			var values = [],
@@ -71,7 +99,10 @@ jQuery( function ( $ ) {
 			return relation != 'OR';
 		},
 		is_child   : function () {
-			return '' != $parent.val();
+			var value = initialCheck ? elements.parent.val() : MBShowHideData.parent,
+				result = !! parseInt( value );
+			console.log( 'Check by is child:', result );
+			return result;
 		}
 	};
 
@@ -85,10 +116,10 @@ jQuery( function ( $ ) {
 		 * @return bool
 		 */
 		template   : function ( callback ) {
-			$pageTemplate.on( 'change', callback );
+			$document.on( 'change', selectors.template.join( ',' ), callback );
 		},
 		post_format: function ( callback ) {
-			$postFormat.on( 'change', callback );
+			$document.on( 'change', selectors.post_format.join( ',' ), callback );
 		},
 		taxonomy   : function ( taxonomy, callback ) {
 			// Fire "change" event when click on popular category
@@ -109,7 +140,7 @@ jQuery( function ( $ ) {
 			$( selector ).on( 'change', callback );
 		},
 		is_child   : function ( callback ) {
-			$parent.on( 'change', callback );
+			$document.on( 'change', selectors.parent.join( ',' ), callback );
 		}
 	};
 
@@ -118,8 +149,6 @@ jQuery( function ( $ ) {
 	 * @param type
 	 * @param conditions
 	 * @param $metaBox
-	 *
-	 * @returns void
 	 */
 	function maybeShowHide( type, conditions, $metaBox ) {
 		var condition = checkAllConditions( conditions );
@@ -149,14 +178,17 @@ jQuery( function ( $ ) {
 			delete localConditions['relation'];
 		}
 
+		initElements();
+
 		var checkBy = ['template', 'post_format', 'input_value', 'is_child'],
 			by, condition;
 
 		for ( var i = 0, l = checkBy.length; i < l; i++ ) {
 			by = checkBy[i];
 
-			if ( !localConditions.hasOwnProperty( by ) )
+			if ( !localConditions.hasOwnProperty( by ) ) {
 				continue;
+			}
 
 			// Call callback function to check for each condition
 			condition = checkCallbacks[by]( localConditions[by], relation );
@@ -164,12 +196,12 @@ jQuery( function ( $ ) {
 			if ( 'OR' == relation ) {
 				value = typeof value == 'undefined' ? condition : value || condition;
 				if ( value ) {
-					return value;
+					break;
 				}
 			} else {
 				value = typeof value == 'undefined' ? condition : value && condition;
 				if ( !value ) {
-					return value;
+					break;
 				}
 			}
 
@@ -178,7 +210,7 @@ jQuery( function ( $ ) {
 
 		// By taxonomy, including category and post format
 		// Note that we unset all other parameters, so we can safely loop in the localConditions array
-		if ( !localConditions.length ) {
+		if ( localConditions.length ) {
 			for ( var taxonomy in localConditions ) {
 				if ( !localConditions.hasOwnProperty( taxonomy ) ) {
 					continue;
@@ -190,16 +222,18 @@ jQuery( function ( $ ) {
 				if ( 'OR' == relation ) {
 					value = typeof value == 'undefined' ? condition : value || condition;
 					if ( value ) {
-						return value;
+						break;
 					}
 				} else {
 					value = typeof value == 'undefined' ? condition : value && condition;
 					if ( !value ) {
-						return value;
+						break;
 					}
 				}
 			}
 		}
+
+		initialCheck = true;
 
 		return value;
 	}
@@ -264,24 +298,53 @@ jQuery( function ( $ ) {
 		}
 	}
 
-	// Show/hide check for each meta box
-	$( '.mb-show-hide' ).each( function () {
-		var $this = $( this ),
-			$metaBox = $this.closest( '.postbox' ),
-			conditions;
+	function init() {
+		$( '.mb-show-hide' ).each( function () {
+			var $this = $( this ),
+				$metaBox = $this.closest( '.postbox' ),
+				conditions;
 
-		// Check for show rules
-		if ( $this.data( 'show' ) ) {
-			conditions = $this.data( 'show' );
-			maybeShowHide( 'show', conditions, $metaBox );
-			addEventListeners( 'show', conditions, $metaBox );
-		}
+			// Check for show rules
+			if ( $this.data( 'show' ) ) {
+				conditions = $this.data( 'show' );
+				maybeShowHide( 'show', conditions, $metaBox );
+			}
 
-		// Check for hide rules
-		if ( $this.data( 'hide' ) ) {
-			conditions = $this.data( 'hide' );
-			maybeShowHide( 'hide', conditions, $metaBox );
-			addEventListeners( 'hide', conditions, $metaBox );
-		}
-	} );
+			// Check for hide rules
+			if ( $this.data( 'hide' ) ) {
+				conditions = $this.data( 'hide' );
+				maybeShowHide( 'hide', conditions, $metaBox );
+			}
+		} );
+	}
+
+	function initEventListeners() {
+		$( '.mb-show-hide' ).each( function () {
+			var $this = $( this ),
+				$metaBox = $this.closest( '.postbox' ),
+				conditions;
+
+			// Check for show rules
+			if ( $this.data( 'show' ) ) {
+				conditions = $this.data( 'show' );
+				addEventListeners( 'show', conditions, $metaBox );
+			}
+
+			// Check for hide rules
+			if ( $this.data( 'hide' ) ) {
+				conditions = $this.data( 'hide' );
+				addEventListeners( 'hide', conditions, $metaBox );
+			}
+		} );
+	}
+
+	// Run the code after Gutenberg has done rendering.
+	// https://stackoverflow.com/a/34999925/371240
+	setTimeout( function() {
+		window.requestAnimationFrame( function() {
+			initElements();
+			init();
+			initEventListeners();
+		} );
+	}, 1000 );
 } );

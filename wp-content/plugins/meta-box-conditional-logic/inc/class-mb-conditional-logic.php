@@ -14,12 +14,8 @@ class MB_Conditional_Logic {
 	 * Initialize.
 	 */
 	public function init() {
-		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue' ) );
-
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue' ) );
-
+		add_action( 'rwmb_enqueue_scripts', array( $this, 'enqueue' ) );
 		add_action( 'rwmb_before', array( $this, 'insert_meta_box_conditions' ) );
-
 		add_filter( 'rwmb_wrapper_html', array( $this, 'insert_field_conditions' ), 10, 3 );
 	}
 
@@ -27,22 +23,28 @@ class MB_Conditional_Logic {
 	 * Enqueue Conditional Logic script and pass conditional logic values to it
 	 */
 	public function enqueue() {
-		$conditions = $this->get_all_conditions();
-
 		list( , $url ) = RWMB_Loader::get_path( dirname( dirname( __FILE__ ) ) );
 
 		if ( ! is_admin() && ! defined( 'MB_FRONTEND_SUBMISSION_DIR' ) ) {
 			return;
 		}
 
-		// Backward compatibility.
-		$url = defined( 'MBC_JS_URL' ) ? MBC_JS_URL : $url . 'js/';
+		wp_enqueue_script( 'mb-conditional-logic', $url . 'js/conditional-logic.js', array( 'jquery', 'underscore' ), '1.5', true );
 
-		wp_register_script( 'conditional-logic', $url . 'conditional-logic.js', array(), '1.5', true );
+		wp_localize_script( 'mb-conditional-logic', 'conditions', $this->get_all_conditions() );
 
-		wp_localize_script( 'conditional-logic', 'conditions', $conditions );
-
-		wp_enqueue_script( 'conditional-logic' );
+		$post_id = $this->get_post_id();
+		$parent  = null;
+		if ( $post_id ) {
+			$post   = get_post( $post_id );
+			$parent = $post->post_parent;
+		}
+		$data = array(
+			'page_template' => $this->get_template( $post_id ),
+			'post_format'   => get_post_format( $post_id ),
+			'parent'        => $parent,
+		);
+		wp_localize_script( 'mb-conditional-logic', 'MBConditionalLogicData', $data );
 	}
 
 	/**
@@ -223,5 +225,19 @@ class MB_Conditional_Logic {
 		$prepared = call_user_func_array( array( $wpdb, 'prepare' ), array_merge( array( $sql ), $slugs ) );
 
 		return array_map( 'intval', $wpdb->get_col( $prepared ) );
+	}
+
+	private function get_post_id() {
+		$post_id = null;
+		if ( isset( $_GET['post'] ) ) {
+			$post_id = intval( $_GET['post'] );
+		} elseif ( isset( $_POST['post_ID'] ) ) {
+			$post_id = intval( $_POST['post_ID'] );
+		}
+		return $post_id;
+	}
+
+	private function get_template( $post_id ) {
+		return get_post_meta( $post_id, '_wp_page_template', true );
 	}
 }

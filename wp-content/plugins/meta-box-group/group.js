@@ -272,7 +272,7 @@
 		// Sub groups: reset titles, but preserve the state.
 		group.toggle.initTitle( $group );
 
-		$wrapper.trigger( 'clone_completed' );
+		$wrapper.trigger( 'clone_completed', [$group] );
 	};
 
 	/**

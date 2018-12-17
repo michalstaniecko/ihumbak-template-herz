@@ -3,7 +3,7 @@
  * Plugin Name: Meta Box Show Hide
  * Plugin URI: https://metabox.io/plugins/meta-box-show-hide/
  * Description: Easily show/hide meta boxes by various conditions using JavaScript.
- * Version: 1.0.4
+ * Version: 1.1.0
  * Author: MetaBox.io
  * Author URI: https://metabox.io
  * License: GPL2+
@@ -66,7 +66,35 @@ if ( ! class_exists( 'MB_Show_Hide' ) ) {
 		 */
 		public function enqueue() {
 			list( , $url ) = RWMB_Loader::get_path( dirname( __FILE__ ) );
-			wp_enqueue_script( 'mb-show-hide', $url . 'show-hide.js', array( 'jquery' ), '1.0.2', true );
+			wp_enqueue_script( 'mb-show-hide', $url . 'show-hide.js', array( 'jquery', 'underscore' ), '1.0.2', true );
+
+			$post_id = $this->get_post_id();
+			$parent  = null;
+			if ( $post_id ) {
+				$post   = get_post( $post_id );
+				$parent = $post->post_parent;
+			}
+			$data = array(
+				'template'    => $this->get_template( $post_id ),
+				'post_format' => get_post_format( $post_id ),
+				'parent'      => $parent,
+			);
+
+			wp_localize_script( 'mb-show-hide', 'MBShowHideData', $data );
+		}
+
+		public function get_post_id() {
+			$post_id = null;
+			if ( isset( $_GET['post'] ) ) {
+				$post_id = intval( $_GET['post'] );
+			} elseif ( isset( $_POST['post_ID'] ) ) {
+				$post_id = intval( $_POST['post_ID'] );
+			}
+			return $post_id;
+		}
+
+		public function get_template( $post_id ) {
+			return get_post_meta( $post_id, '_wp_page_template', true );
 		}
 	}
 

@@ -66,15 +66,15 @@ $projects = new WP_Query( $args );
                 <?php $videos = rwmb_meta( 'video' ); ?>
                 <div class="c-hero-scene__player c-hero-scene__player--video">
 
-                  <video loop muted class="c-hero-scene__video--desktop">
-                    <source src="<?= wp_get_attachment_url($videos['video-d-webm'][0]) ?>" type="video/webm">
+                  <video autoplay loop muted playsinline class="c-hero-scene__video--desktop">
                     <source src="<?= wp_get_attachment_url($videos['video-d-mp4'][0]) ?>" type="video/mp4">
+                    <source src="<?= wp_get_attachment_url($videos['video-d-webm'][0]) ?>" type="video/webm">
                     <source src="<?= wp_get_attachment_url($videos['video-d-ogv'][0]) ?>" type="video/ogv">
                   </video>
-                  <video loop muted class="c-hero-scene__video--mobile">
-                    <source src="<?= wp_get_attachment_url($videos['video-d-webm'][0]) ?>" type="video/webm">
-                    <source src="<?= wp_get_attachment_url($videos['video-d-mp4'][0]) ?>" type="video/mp4">
-                    <source src="<?= wp_get_attachment_url($videos['video-d-ogv'][0]) ?>" type="video/ogv">
+                  <video autoplay loop muted playsinline class="c-hero-scene__video--mobile">
+                    <source src="<?= wp_get_attachment_url($videos['video-m-mp4'][0]) ?>" type="video/mp4">
+                    <source src="<?= wp_get_attachment_url($videos['video-m-webm'][0]) ?>" type="video/webm">
+                    <source src="<?= wp_get_attachment_url($videos['video-m-ogv'][0]) ?>" type="video/ogv">
                   </video>
                 </div>
                 <?php break;
@@ -95,12 +95,9 @@ $projects = new WP_Query( $args );
       <div class="c-hero-scene__lead">
         <div class="container-fluid container-fluid-stop">
 
-          <div class="c-hero-scene__lead-text">
-            <h1>
-              Realizacje<br/>
-              od których serce<br/>
-              bije szybciej
-            </h1>
+          <div class="c-hero-scene__lead-text d-none">
+            <img src="<?= HERZ_IMG ?>/claim/claim_mobile.png" srcset="<?= HERZ_IMG ?>/claim/claim_mobile.png 1x, <?= HERZ_IMG ?>/claim/claim_mobile@x2.png 2x" class="d-md-none" />
+            <img src="<?= HERZ_IMG ?>/claim/claim_mobile.png" srcset="<?= HERZ_IMG ?>/claim/claim.png 1x, <?= HERZ_IMG ?>/claim/claim.png 2x" class="d-none d-md-block" />
           </div>
         </div>
       </div>

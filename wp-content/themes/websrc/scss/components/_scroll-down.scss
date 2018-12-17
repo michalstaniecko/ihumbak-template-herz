@@ -1,5 +1,5 @@
 .c-scroll-down {
-  @include media-breakpoint-up(lg) {
+  @media (orientation: landscape) {
     display: none;
   }
 
