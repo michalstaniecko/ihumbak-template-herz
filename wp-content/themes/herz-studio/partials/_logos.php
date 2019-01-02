@@ -7,7 +7,7 @@ $logos = rwmb_meta( 'logos' );
 <div class="container-fluid container-fluid-stop c-logos">
   <div class="row h-100 align-items-center  ">
     <div class="col-lg-2 col-md-3 text-center text-md-left">
-      Nagrody i wyróżnienia
+      <?php _e('Nagrody i wyróżnienia', 'herz-studio'); ?>
     </div>
     <div class="col-lg-10 col-md-9">
 

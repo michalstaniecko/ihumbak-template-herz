@@ -33,4 +33,5 @@ include get_template_directory().'/inc/metaboxes-projects.php';
 include get_template_directory().'/inc/post-type-projects.php';
 include get_template_directory().'/inc/analytics.php';
 include get_template_directory().'/inc/metatags.php';
+include get_template_directory().'/inc/after-setup-theme.php';
 //include get_template_directory().'/inc/mime-types.php';
