@@ -27,12 +27,13 @@
 }
 
 .c-topbar__row {
-  height: 66px;
+  height: 100px;
   align-items: center;
+  position: relative;
   @media (orientation: landscape) {
     @include media-breakpoint-up(md){
 
-      height: 125px;
+      height: 136px;
     }
 
   }
@@ -54,4 +55,27 @@
 @keyframes topbarAnimation {
   from {transform: translateY(-100%);}
   to {transform: translateY(0)}
+}
+
+.c-topbar__lang-switch {
+  position: absolute;
+  right: 15px;
+  top: 0;
+  ul {
+    padding-left:0;
+    margin-bottom: 0;
+  }
+  li {
+    line-height: 1;
+    list-style: none;
+  }
+  a {
+    line-height: 1;
+  }
+  span {
+    display: none;
+  }
+  img {
+    float: left;
+  }
 }
